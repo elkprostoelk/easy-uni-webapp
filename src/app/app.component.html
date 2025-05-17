@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<header>
+  <div class="logo">Easy Uni</div>
+  <div class="user-section" *ngIf="isLoggedIn">
+    <p-avatar label="U" styleClass="mr-2" size="xlarge" />
+    <p-menu #userMenu [model]="userMenuItems" [popup]="true" />
+    <p-button icon="pi pi-angle-down" [text]="true" [link]="true" (click)="userMenu.toggle($event)" />
+  </div>
+</header>
+<main>
+  <p-toast></p-toast>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  &copy; {{currentYear}} EasyUni application. All rights reserved.
+</footer>

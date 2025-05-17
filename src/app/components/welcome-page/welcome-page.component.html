@@ -1,0 +1,12 @@
+<h1>Welcome to Easy Uni App!</h1>
+<div class="welcome-text">
+  Welcome to Easy Uni App! This application will help you to manage the university processes really
+  quickly and without any problems. All you need is just log in with your credentials and start your work.
+</div>
+<div class="buttons">
+  <button
+    *ngIf="!isLoggedIn"
+    pButton
+    class="login-button"
+    routerLink="/login">Log in</button>
+</div>
