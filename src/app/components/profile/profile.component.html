@@ -11,6 +11,7 @@
         <div class="main-info-row">First Name: {{ userProfile.firstName }}</div>
         <div class="main-info-row" *ngIf="userProfile.middleName">Middle Name: {{ userProfile.middleName }}</div>
         <div class="main-info-row">Last Name: {{ userProfile.lastName }}</div>
+        <div class="main-info-row">Gender: {{ userProfile.gender }}</div>
         <div class="main-info-row">Date of birth: {{ userProfile.birthDate | date: 'dd.MM.YYYY' }}</div>
         <div class="main-info-row">E-mail: {{ userProfile.email }}</div>
         <div class="main-info-row">Phone number: {{ userProfile.phoneNumber }}</div>
