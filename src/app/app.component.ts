@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {Avatar} from 'primeng/avatar';
 import {AuthService} from './services/auth.service';
 import {NgIf} from '@angular/common';
@@ -19,6 +19,11 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   userMenuItems: MenuItem[] = [
     {
+      label: 'Profile',
+      icon: 'pi pi-user',
+      command: () => this.openProfile()
+    },
+    {
       label: 'Log out',
       icon: 'pi pi-sign-out',
       command: () => this.logout()
@@ -26,7 +31,8 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private readonly authService: AuthService) {}
+    private readonly authService: AuthService,
+    private readonly router: Router) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
@@ -34,5 +40,10 @@ export class AppComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
+    this.router.navigate(['/']).then();
+  }
+
+  openProfile(): void {
+    this.router.navigate(['/profile']).then();
   }
 }

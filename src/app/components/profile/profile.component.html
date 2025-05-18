@@ -1,0 +1,20 @@
+<div class="profile-page-container">
+  <p-card>
+    <ng-template #title>
+      Main information
+    </ng-template>
+    <div class="main-info-section">
+      <div class="image-section">
+        <img ngSrc="100x150.png" width="100" height="150" alt="Placeholder image" priority />
+      </div>
+      <div class="main-info">
+        <div class="main-info-row">First Name: {{ userProfile.firstName }}</div>
+        <div class="main-info-row" *ngIf="userProfile.middleName">Middle Name: {{ userProfile.middleName }}</div>
+        <div class="main-info-row">Last Name: {{ userProfile.lastName }}</div>
+        <div class="main-info-row">Date of birth: {{ userProfile.birthDate | date: 'dd.MM.YYYY' }}</div>
+        <div class="main-info-row">E-mail: {{ userProfile.email }}</div>
+        <div class="main-info-row">Phone number: {{ userProfile.phoneNumber }}</div>
+      </div>
+    </div>
+  </p-card>
+</div>

@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
             data: 'Failed to log in!',
             life: 3000
           });
+          this.isLoading = false;
         },
         complete: () => this.isLoading = false
       });
