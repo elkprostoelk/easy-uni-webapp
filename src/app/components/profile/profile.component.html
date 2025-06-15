@@ -2,6 +2,19 @@
   <p-card>
     <ng-template #title>
       Main information
+      <p-button
+        type="button"
+        severity="warn"
+        icon="pi pi-pencil"
+        [text]="true"
+        [pTooltip]="'Edit profile info'"
+        (onClick)="showEditProfileDialog()"></p-button>
+      <app-edit-profile-info
+        [userId]="userId"
+        [userProfile]="userProfile"
+        [(visible)]="editFormVisible"
+        (onCancelClicked)="onEditProfileCancelled()"
+        (onSaved)="onProfileEdited()"/>
     </ng-template>
     <div class="loader" *ngIf="isProfileLoading; else profileLoaded"><p-progress-spinner ariaLabel="loading" /></div>
     <ng-template #profileLoaded>
@@ -13,7 +26,7 @@
           <div class="main-info-row">First Name: {{ userProfile.firstName }}</div>
           <div class="main-info-row" *ngIf="userProfile.middleName">Middle Name: {{ userProfile.middleName }}</div>
           <div class="main-info-row">Last Name: {{ userProfile.lastName }}</div>
-          <div class="main-info-row">Gender: {{ userProfile.gender }}</div>
+          <div class="main-info-row">Gender: {{ userProfile.gender | gender }}</div>
           <div class="main-info-row">Date of birth: {{ userProfile.birthDate | date: 'dd.MM.YYYY' }}</div>
           <div class="main-info-row">E-mail: {{ userProfile.email }}</div>
           <div class="main-info-row">Phone number: {{ userProfile.phoneNumber }}</div>

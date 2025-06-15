@@ -1,0 +1,62 @@
+<p-dialog
+  header="Edit Profile"
+  [modal]="true"
+  [(visible)]="visible"
+  [closable]="true"
+  [closeOnEscape]="true"
+  [style]="{ width: '25rem' }"
+  (onHide)="closeDialog()">
+  <span class="p-text-secondary">Update your information.</span>
+  <form [formGroup]="editForm">
+    <div class="form-item">
+      <label for="email">Email <i class="pi pi-asterisk required-icon"></i></label>
+      <input pInputText
+             id="email"
+             autocomplete="off"
+             formControlName="email"
+             type="email"/>
+    </div>
+    <div class="form-item">
+      <label for="firstName">First name <i class="pi pi-asterisk required-icon"></i></label>
+      <input pInputText id="firstName" autocomplete="off" formControlName="firstName" />
+    </div>
+    <div class="form-item">
+      <label for="middleName">Middle name (if exists)</label>
+      <input pInputText id="middleName" autocomplete="off" formControlName="middleName" />
+    </div>
+    <div class="form-item">
+      <label for="lastName">Last name <i class="pi pi-asterisk required-icon"></i></label>
+      <input pInputText id="lastName" autocomplete="off" formControlName="lastName" />
+    </div>
+    <div class="form-item">
+      <label for="gender">Gender <i class="pi pi-asterisk required-icon"></i></label>
+      <p-select [options]="genders"
+                optionLabel="name"
+                optionValue="id"
+                placeholder="Select a gender"
+                formControlName="gender"
+                [style]="{'font-size': '1rem'}"/>
+    </div>
+    <div class="form-item">
+      <label for="phoneNumber">Phone number <i class="pi pi-asterisk required-icon"></i></label>
+      <input pInputText id="phoneNumber" autocomplete="off" formControlName="phoneNumber" />
+    </div>
+    <div class="form-item">
+      <label for="birthDate">Birth date <i class="pi pi-asterisk required-icon"></i></label>
+      <p-datePicker id="birthDate"
+                    dateFormat="dd.mm.yy"
+                    [showIcon]="true"
+                    appendTo="body"
+                    formControlName="birthDate" />
+    </div>
+    <div class="form-buttons">
+      <p-button label="Cancel" severity="secondary" (click)="onCancelClick()" />
+      <p-button
+        label="Save"
+        severity="success"
+        [loading]="isLoading"
+        [disabled]="editForm.invalid || !editForm.dirty || !formChanged()"
+        (click)="onSaveClick()" />
+    </div>
+  </form>
+</p-dialog>

@@ -5,5 +5,5 @@ export class UserProfileDto {
   middleName: string | null = null;
   birthDate: string = '';
   phoneNumber: string = '';
-  gender: string = '';
+  gender: number = 0;
 }
